@@ -6,11 +6,8 @@ var response = require('../res');
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config/secret');
 var ip = require("ip");
+var jsonku = require('../controller');
 
-
-exports.test = function (req, res) {
-    response.ok("Test Router!", res)
-};
 //registrasi user baru
 exports.registrasi = function (req, res) {
     var post = {
@@ -93,11 +90,11 @@ exports.login = function (req, res) {
                         console.log(error);
                     } else {
                         res.json({
-                			success: true,
-                			message: 'Token generated',
-                			token: token,
-                			currUser: data.id_user
-                		});
+                            success: true,
+                            message: 'Token generated',
+                            token: token,
+                            currUser: data.id_user
+                        });
                     }
                 });
             }
@@ -111,3 +108,25 @@ exports.login = function (req, res) {
 
 
 
+exports.test = function (req, res) {
+    response.ok("Test Router!", res);
+};
+
+//halaman untuk user role =2
+exports.rahasiauser = function (req, res) {
+    response.ok("URL Authentifikasi role 2!", res);
+};
+
+//halaman untuk user role =1
+exports.rahasiaadmin = function (req, res) {
+    response.ok("URL Authentifikasi role 1!", res);
+};
+
+app.route('/tambah')
+    .post(jsonku.tambahMahasiswa);
+
+app.route('/ubah')
+    .put(jsonku.ubahMahasiswa);
+    
+app.route('/hapus')
+    .delete(jsonku.hapusMahasiswa);
