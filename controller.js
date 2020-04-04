@@ -3,8 +3,13 @@
 var response = require('./res');
 var connection = require('./koneksi');
 
+
 exports.index = function (req, res) {
     response.ok("Aplikasi REST API ku berjalan!", res)
+};
+
+exports.rahasia = function (req, res) {
+    response.ok("Halaman rahasia!", res)
 };
 
 //menampilkan semua data mahasiswa
@@ -68,7 +73,7 @@ exports.ubahMahasiswa = function (req, res) {
 //Menghapus data berdasarkan id
 exports.hapusMahasiswa = function (req, res) {
     var id = req.body.id_mahasiswa;
-    connection.query('DELETE FROM mahasiswa WHERE id_mahasiswa=?',[id],
+    connection.query('DELETE FROM mahasiswa WHERE id_mahasiswa=?', [id],
         function (error, rows, fields) {
             if (error) {
                 console.log(error);
@@ -77,6 +82,8 @@ exports.hapusMahasiswa = function (req, res) {
             }
         });
 }
+
+
 
 //menampilkan matakuliah group
 // exports.tampilgroupmatakuliah = function(req, res){
@@ -91,3 +98,9 @@ exports.hapusMahasiswa = function (req, res) {
 //     )
 
 // }
+
+
+
+
+
+
