@@ -6,7 +6,7 @@ var response = require('../res');
 var jwt = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('../config/secret');
 var ip = require("ip");
-var jsonku = require('../controller');
+
 
 //registrasi user baru
 exports.registrasi = function (req, res) {
@@ -122,11 +122,3 @@ exports.rahasiaadmin = function (req, res) {
     response.ok("URL Authentifikasi role 1!", res);
 };
 
-app.route('/tambah')
-    .post(jsonku.tambahMahasiswa);
-
-app.route('/ubah')
-    .put(jsonku.ubahMahasiswa);
-    
-app.route('/hapus')
-    .delete(jsonku.hapusMahasiswa);
